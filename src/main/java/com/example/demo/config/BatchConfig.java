@@ -25,9 +25,8 @@ public class BatchConfig extends DefaultBatchConfigurer {
      * @Author: hh
      * @Date: 2020/4/2
     **/
-    @Override
-    public void setDataSource(DataSource dataSource) {
-        // initialize will use a Map based JobRepository (instead of database)
-        //super.setDataSource(dataSource);
-    }
+//    @Override
+//    public void setDataSource(DataSource dataSource) {
+//        // initialize will use a Map based JobRepository (instead of database)
+//    }
 }

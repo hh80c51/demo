@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 
+import javax.annotation.Resource;
+
 /**
  * @ClassName HelloWorldJobConfig
  * @Description: 配置Hello World Spring Batch 作业
@@ -29,6 +31,9 @@ import org.springframework.core.io.FileSystemResource;
  **/
 @Configuration
 public class HelloWorldJobConfig {
+
+    @Resource
+    private JobCompletionNotificationListener jobListener;
 
     /**
      * @MethodName: helloWorlJob
@@ -40,8 +45,7 @@ public class HelloWorldJobConfig {
     **/
     @Bean
     public Job helloWorldJob(JobBuilderFactory jobBuilders,
-                            StepBuilderFactory stepBuilders,
-                            JobCompletionNotificationListener jobListener) {
+                            StepBuilderFactory stepBuilders) {
         return jobBuilders.get("helloWorldJob")
                 .start(helloWorldStep(stepBuilders)).listener(jobListener).build();
     }

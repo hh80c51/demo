@@ -8,8 +8,17 @@ package com.example.demo.entity;
  * @Version V1.0
  **/
 public class User {
-    String name;
-    int age;
+    private int id;
+    private String name;
+    private int age;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -27,9 +36,8 @@ public class User {
         this.age = age;
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public User() {
+
     }
 
     @Override
