@@ -14,7 +14,7 @@ public class CommonMybatisItemReader<T> extends MyBatisPagingItemReader<T> {
 
     public CommonMybatisItemReader(SqlSessionFactory sqlSessionFactory,String name) {
         setSqlSessionFactory(sqlSessionFactory);
-        setQueryId("com.example.demo."+name+".selectList");
+        setQueryId("com.example.demo.entity."+name+".selectList");
         setPageSize(100);
     }
 }

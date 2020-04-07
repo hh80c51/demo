@@ -6,7 +6,7 @@
     <resultMap type="user" id="userMap">
         <result column="id" property="id" jdbcType="INTEGER" />
         <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
     </resultMap>
 
 
@@ -16,7 +16,7 @@
    </insert>
 
     <select id="selectList"  resultMap="userMap">
-        select id, name, age from user
+        select * from user
     </select>
 
 </mapper>

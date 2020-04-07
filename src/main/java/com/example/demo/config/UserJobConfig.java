@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
+import com.example.demo.common.CommonItemWriter;
 import com.example.demo.common.CommonMybatisItemReader;
-import com.example.demo.common.CommonMybatisItemWriter;
 import com.example.demo.entity.User;
 import com.example.demo.processor.UserProcessor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -35,8 +35,10 @@ public class UserJobConfig  {
     private StepBuilderFactory stepBuilderFactory;
     @Resource
     private SqlSessionFactory sqlSessionFactory;
-    @Autowired
+    @Resource
     private UserProcessor userProcessor;
+    @Resource
+    private CommonItemWriter commonItemWriter;
 
     @Bean
     public Job userJob(){
@@ -51,7 +53,7 @@ public class UserJobConfig  {
                 .<User,String>chunk(10)
                 .reader(userReader())
                 .processor(userProcessor)
-                .writer(userWriter())
+                .writer(commonItemWriter)
                 .build();
     }
 
@@ -61,9 +63,4 @@ public class UserJobConfig  {
         return new CommonMybatisItemReader<>(sqlSessionFactory,User.class.getSimpleName());
     }
 
-    @Bean
-    @StepScope
-    public ItemWriter<? super String> userWriter(){
-        return new CommonMybatisItemWriter<>(sqlSessionFactory,User.class.getSimpleName());
-    }
 }

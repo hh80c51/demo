@@ -8,15 +8,15 @@ package com.example.demo.entity;
  * @Version V1.0
  **/
 public class User {
-    private int id;
+    private Integer id;
     private String name;
-    private int age;
+    private String age;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -28,11 +28,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
